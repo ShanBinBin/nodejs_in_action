@@ -1,0 +1,14 @@
+{
+  "name": "connect_demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "connect_test.js",
+  "scripts": {
+    "start": "node ./connect_test.js"
+  },
+  "author": "shanbinbin",
+  "license": "ISC",
+  "dependencies": {
+    "connect": "^3.6.6"
+  }
+}
