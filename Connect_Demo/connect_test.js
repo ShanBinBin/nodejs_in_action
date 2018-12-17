@@ -1,10 +1,11 @@
-var connect = require('connect');
-var app = connect();
+const connect = require('connect');
+const app = connect();
+const logger = require('./logger');
 
-function logger(req, res, next) {
-    console.log('%s %s', req.method, req.url); // 这个log打印出来的req.url是/admin,而后面的admin中间件却是/，可能是因为admin挂载了/admin的原因
-    next();
-}
+// function logger(req, res, next) {
+//     console.log('%s %s', req.method, req.url); // 这个log打印出来的req.url是/admin,而后面的admin中间件却是/，可能是因为admin挂载了/admin的原因
+//     next();
+// }
 
 function hello(req, res, next) {
     res.setHeader('Content-Type', 'text/plain');
@@ -12,16 +13,16 @@ function hello(req, res, next) {
 }
 
 function restrict(req, res, next) {
-    var authorization = req.headers.authorization;
+    let authorization = req.headers.authorization;
     if (!authorization) {
         return next(new Error('Unauthorized'));
     }
 
-    var parts = authorization.split(' ');
-    var scheme = parts[0];
-    var auth = new Buffer(parts[1], 'base64').toString().split(':');
-    var user = auth[0];
-    var pass = auth[1];
+    let parts = authorization.split(' ');
+    let scheme = parts[0];
+    let auth = new Buffer(parts[1], 'base64').toString().split(':');
+    let user = auth[0];
+    let pass = auth[1];
 
     authenticateWithDatabase(user, pass, function (err) {
         if (err) {
@@ -62,7 +63,7 @@ function admin(req, res, next) {
     }
 }
 
-app.use(logger);
+app.use(logger(':method :url'));
 app.use('/admin', restrict); // 当.use()的第一个参数是个字符串时，只有URL前缀与之匹配时，Connect才会调用后面的中间件
 app.use('/admin', admin);
 app.use(hello);
