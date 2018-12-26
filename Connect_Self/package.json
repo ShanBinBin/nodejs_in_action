@@ -1,0 +1,17 @@
+{
+  "name": "connect_self",
+  "version": "1.0.0",
+  "description": "",
+  "main": "connect_self.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shanbinbin",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "connect": "^3.6.6",
+    "cookie-parser": "^1.4.3",
+    "limit": "0.0.1"
+  }
+}
