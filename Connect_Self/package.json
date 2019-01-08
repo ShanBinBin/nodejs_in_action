@@ -12,6 +12,7 @@
     "body-parser": "^1.18.3",
     "connect": "^3.6.6",
     "cookie-parser": "^1.4.3",
-    "limit": "0.0.1"
+    "limit": "0.0.1",
+    "morgan": "^1.9.1"
   }
 }
